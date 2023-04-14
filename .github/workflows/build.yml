@@ -308,14 +308,18 @@ jobs:
           sudo apt-get update
           sudo apt-get upgrade -y
           # Temp!
-          sudo apt-get install -y libffi-dev
-          # Temp!
-          sudo apt-get install -y python3.6-dev
+          #sudo apt-get install -y libffi-dev
 
       - name: Checkout sigrok-build
         uses: actions/checkout@v3
         with:
           path: sigrok-build
+
+      - name: Insall conda
+        run: |
+          cd sigrok-build/ci/appimage
+          source sigrok-appimage-init-toolchain.sh
+          ./sigrok-appimage-install-conda.sh
 
       - name: Build dependencies
         run: |
@@ -343,6 +347,7 @@ jobs:
         run: |
           cd sigrok-build/ci/appimage
           source sigrok-appimage-init-toolchain.sh
+          ./sigrok-appimage-cleanup-conda.sh
           ./sigrok-appimage-create-appimage.sh
 
       - name: Upload artifact
