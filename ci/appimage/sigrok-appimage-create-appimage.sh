@@ -67,5 +67,5 @@ if [ "$ARTIFACT_BIN_NAME" = "pulseview" ]; then
 fi
 
 export OUTPUT="$ARTIFACT_TITLE-$ARTIFACT_VERSION-$TARGET.AppImage"
-./linuxdeploy-$ARCH.AppImage --appdir "$APP_DIR" --output appimage $PLUGINS --custom-apprun "$INSTALL_DIR"/AppRun.sh
+./linuxdeploy-$ARCH.AppImage --appdir "$APP_DIR" --library "$APP_DIR"/usr/conda/lib/libpython3.10.so.1.0 --output appimage $PLUGINS --custom-apprun "$INSTALL_DIR"/AppRun.sh
 
