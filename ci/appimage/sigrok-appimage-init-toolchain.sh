@@ -23,7 +23,7 @@ set -e
 
 export PARALLEL="-j$(nproc)"
 
-export P="$INSTALL_DIR/lib/pkgconfig"
+export P="$INSTALL_DIR/lib/pkgconfig":"$APP_DIR/usr/conda/lib/pkgconfig"
 export C="$C --prefix=$INSTALL_DIR"
 export L="$L"
 #export V="V=1 VERBOSE=1"
