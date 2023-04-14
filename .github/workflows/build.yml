@@ -336,10 +336,11 @@ jobs:
       - name: Build sigrok-cli
         run: |
           source sigrok-build/ci/appimage/sigrok-appimage-init-toolchain.sh
-          mkdir -p "$APP_DIR"
+          source "$APP_DIR"/usr/conda/bin/activate
+          #mkdir -p "$APP_DIR"
           cd sigrok-cli
           ./autogen.sh
-          PKG_CONFIG_PATH=$P ./configure --prefix="$APP_DIR"/usr
+          PKG_CONFIG_PATH=$P ./configure --prefix="$APP_DIR"/usr LDFLAGS="-Wl,-rpath=$APP_DIR/usr/conda/lib" # -L$APP_DIR/usr/conda/lib"
           make $PARALLEL $V
           make install $V
 
