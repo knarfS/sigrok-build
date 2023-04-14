@@ -24,8 +24,12 @@ set -e
 cat > "$INSTALL_DIR"/AppRun.sh << EOF
 #! /bin/bash
 
-export PYTHONHOME="\$APPDIR"/usr/share/pyshared
-export PYTHONPATH="\$APPDIR"/usr/share/pyshared
+# Load miniconda environment
+. "\$APPDIR"/usr/conda/etc/profile.d/conda.sh
+conda activate
+
+#export PYTHONHOME="\$APPDIR"/usr/share/pyshared
+#export PYTHONPATH="\$APPDIR"/usr/share/pyshared
 export SIGROK_FIRMWARE_PATH="\$SIGROK_FIRMWARE_PATH":"\$APPDIR"/usr/share/sigrok-firmware
 export SIGROKDECODE_PATH="\$SIGROKDECODE_PATH":"\$APPDIR"/usr/share/libsigrokdecode/decoders
 

@@ -21,6 +21,9 @@
 
 set -e
 
+# Activate conda environment
+. "$APP_DIR"/usr/conda/bin/activate
+
 mkdir -p "$INSTALL_DIR"
 
 BUILD_DIR=./build
